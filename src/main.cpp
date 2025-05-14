@@ -9,14 +9,13 @@
 #include <tenergy32gateway.h>
 #include <esp_task_wdt.h>
 #include <esp_system.h> // สำหรับ esp_read_mac
-
 // —– Blynk Template & Device settings (จาก Console) —–
-#define BLYNK_TEMPLATE_ID "TMPL6ELg-Y3N3"
-#define BLYNK_TEMPLATE_NAME "FactoryMonitor Ethernet"
-#define BLYNK_DEVICE_NAME "ESP32-Gateway"
+#define BLYNK_TEMPLATE_ID "BLYNK_TEMPLATE_ID"
+#define BLYNK_TEMPLATE_NAME "BLYNK_TEMPLATE_NAME"
+#define BLYNK_DEVICE_NAME "BLYNK_DEVICE_NAME"
 
 // —– Blynk Authentication —–
-#define BLYNK_AUTH_TOKEN "G_2mN3hBW8574xj1jhGY0jVZfM909dg0"
+#define BLYNK_AUTH_TOKEN "BLYNK_AUTH_TOKEN"
 
 // ===== เลือกโหมดการเชื่อมต่อ Blynk =====
 #define USE_ETHERNET    // เลือกเชื่อมต่อผ่าน Ethernet
@@ -28,8 +27,8 @@
 #include <WiFi.h>
 #include <BlynkSimpleEsp32.h>
 // กำหนด WiFi SSID และ Password
-#define WIFI_SSID "TENERGYINNOVATION"
-#define WIFI_PASS "L0vemel0vemydog"
+#define WIFI_SSID "WIFI_SSID"
+#define WIFI_PASS "WIFI_PASS"
 #endif
 
 Tenergy32GateWay mcu;
