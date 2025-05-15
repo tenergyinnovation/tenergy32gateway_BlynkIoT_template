@@ -1,6 +1,9 @@
 /***********************************************************************
  * Project      :     tenergy32gateway_Blynk
  * Description  :     Test program for Tenergy32 Gateway board
+ * Revision     :     1.1
+ * Rev1.0       :     Original
+ * Rev1.1       :     แก้ไขลำดับ parameter ของฟังก์ชั่น begin() [2025-05-15]
  * Hardware     :     Tenergy32GateWay
  * Author       :     Tenergy Innovation Co., Ltd.
  * Date         :     14/05/2025
@@ -9,6 +12,7 @@
 #include <tenergy32gateway.h>
 #include <esp_task_wdt.h>
 #include <esp_system.h> // สำหรับ esp_read_mac
+
 // —– Blynk Template & Device settings (จาก Console) —–
 #define BLYNK_TEMPLATE_ID "BLYNK_TEMPLATE_ID"
 #define BLYNK_TEMPLATE_NAME "BLYNK_TEMPLATE_NAME"
@@ -18,8 +22,8 @@
 #define BLYNK_AUTH_TOKEN "BLYNK_AUTH_TOKEN"
 
 // ===== เลือกโหมดการเชื่อมต่อ Blynk =====
-#define USE_ETHERNET    // เลือกเชื่อมต่อผ่าน Ethernet
-// #define USE_WIFI // เลือกเชื่อมต่อผ่าน WiFi
+// #define USE_ETHERNET    // เลือกเชื่อมต่อผ่าน Ethernet
+#define USE_WIFI // เลือกเชื่อมต่อผ่าน WiFi
 
 #ifdef USE_ETHERNET
 #include <BlynkSimpleEthernet.h>
@@ -27,8 +31,8 @@
 #include <WiFi.h>
 #include <BlynkSimpleEsp32.h>
 // กำหนด WiFi SSID และ Password
-#define WIFI_SSID "WIFI_SSID"
-#define WIFI_PASS "WIFI_PASS"
+#define WIFI_SSID "WiFi_SSID"
+#define WIFI_PASS "WiFi_PASS"
 #endif
 
 Tenergy32GateWay mcu;
@@ -69,9 +73,9 @@ void setup()
     header_print();
 
 #ifdef USE_ETHERNET
-    if (!mcu.begin(433E6, true)) // true = ใช้ Ethernet
+    if (!mcu.begin(true, 433E6)) // true = ใช้ Ethernet
 #elif defined(USE_WIFI)
-    if (!mcu.begin(433E6, false)) // false = ไม่ใช้ Ethernet
+    if (!mcu.begin(false, 433E6)) // false = ไม่ใช้ Ethernet
 #endif
     {
         Serial.println("Tenergy32 Gateway initialization failed!");
